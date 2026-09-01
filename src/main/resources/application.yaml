@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: notification-service
+  mvc:
+    servlet:
+      path: /api/v1
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_ADDRESS}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+app:
+  mail:
+    from: ${EMAIL_SENDER_ADDRESS}
+
+logging:
+  level:
+    root: INFO
+  file:
+    name: /logs/athletelink/notification-service.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
