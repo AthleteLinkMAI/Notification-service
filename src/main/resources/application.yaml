@@ -1,9 +1,6 @@
 spring:
   application:
     name: notification-service
-  mvc:
-    servlet:
-      path: /api/v1
   mail:
     host: smtp.gmail.com
     port: 587
@@ -15,10 +12,22 @@ spring:
           auth: true
           starttls:
             enable: true
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        key-deserializer: org.apache.kafka.common.serialization.UUIDDeserializer
+        value-deserializer: org.springframework.kafka.support.deserializer.JacksonJsonDeserializer
 
 app:
   mail:
     from: ${EMAIL_SENDER_ADDRESS}
+  kafka:
+    topics:
+      notification-messages: notification.messages.requested
 
 logging:
   level:

@@ -1,10 +1,11 @@
-package team.anonyms.athletelink.notificationservice.services;
+package team.anonyms.athletelink.notificationservice.service;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import team.anonyms.athletelink.notificationservice.dtos.EmailNotificationRequest;
+import team.anonyms.athletelink.notificationservice.dto.EmailNotificationRequest;
 
 /**
  * This service handles all notifications over email for the whole application.
@@ -23,7 +24,7 @@ public class EmailService {
     /**
      * Sends a body by an email.
      */
-    public void sendMessageByEmail(EmailNotificationRequest request) {
+    public void sendMessageByEmail(@Valid EmailNotificationRequest request) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(emailFrom);
         mailMessage.setTo(request.to());
