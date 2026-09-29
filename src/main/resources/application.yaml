@@ -19,8 +19,11 @@ spring:
       key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       properties:
-        key-deserializer: org.apache.kafka.common.serialization.UUIDDeserializer
-        value-deserializer: org.springframework.kafka.support.deserializer.JacksonJsonDeserializer
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.UUIDDeserializer
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+        spring.json.value.default.type: team.anonyms.athletelink.notificationservice.dto.kafka.NotificationMessage
+        spring.json.trusted.packages: team.anonyms.athletelink.notificationservice.dto.kafka
+        spring.json.use.type.headers: false
 
 app:
   mail:
