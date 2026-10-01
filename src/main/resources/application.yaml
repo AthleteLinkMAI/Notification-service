@@ -1,6 +1,9 @@
 spring:
   application:
     name: notification-service
+  mvc:
+    servlet:
+      path: /api/v1
   mail:
     host: smtp.gmail.com
     port: 587
