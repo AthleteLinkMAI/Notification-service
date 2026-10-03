@@ -1,4 +1,4 @@
-package team.anonyms.athletelink.notificationservice.dtos;
+package team.anonyms.athletelink.notificationservice.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
